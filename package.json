@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "description": "Package your Garoon plugin",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "rollup -c",
