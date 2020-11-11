@@ -13,6 +13,8 @@
     },
     "target_applications": {
       "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
       "items": {
         "type": "string",
         "enum": ["ALL"]
@@ -20,28 +22,30 @@
     },
     "impacted_applications": {
       "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
       "items": {
         "type": "string",
         "enum": [
           "ALL",
-        "PORTAL",
-        "SPACE",
-        "BOOKMARKS",
-        "SCHEDULER",
-        "MESSAGES",
-        "BULLETIN_BOARD",
-        "CABINET",
-        "MEMO",
-        "PHONE_MESSAGES",
-        "TIMESHEET",
-        "ADDRESS_BOOK",
-        "EMAIL",
-        "WORKFLOW",
-        "MULTI_REPORT",
-        "PRESENCE_INDICATORS",
-        "FAVORITE",
-        "NOTIFICATIONS",
-        "RESPOND"
+          "PORTAL",
+          "SPACE",
+          "BOOKMARKS",
+          "SCHEDULER",
+          "MESSAGES",
+          "BULLETIN_BOARD",
+          "CABINET",
+          "MEMO",
+          "PHONE_MESSAGES",
+          "TIMESHEET",
+          "ADDRESS_BOOK",
+          "EMAIL",
+          "WORKFLOW",
+          "MULTI_REPORT",
+          "PRESENCE_INDICATORS",
+          "FAVORITE",
+          "NOTIFICATIONS",
+          "RESPOND"
         ]
       }
     },
