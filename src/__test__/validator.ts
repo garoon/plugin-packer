@@ -1,7 +1,7 @@
 import { validateManifest } from "../validator";
 import { GaroonPluginManifestJson } from "../../types/manifest-schema";
 
-const validJson = (opts = {}): GaroonPluginManifestJson => {
+const validJson = (overrideParams = {}): GaroonPluginManifestJson => {
   return {
     manifest_version: 1,
     version: "1.0.0",
@@ -11,7 +11,7 @@ const validJson = (opts = {}): GaroonPluginManifestJson => {
     name: {
       en: "name",
     },
-    ...opts,
+    ...overrideParams,
   };
 };
 
