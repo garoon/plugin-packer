@@ -1,11 +1,12 @@
 import { validateManifest } from "../validator";
+import { GaroonPluginManifestJson } from "../../types/manifest-schema";
 
-const validJson = (opts = {}) => {
+const validJson = (opts = {}): GaroonPluginManifestJson => {
   return {
     manifest_version: 1,
     version: "1.0.0",
-    target_applications: [],
-    impacted_applications: [],
+    target_applications: ["ALL"],
+    impacted_applications: ["ALL"],
     icon: "/path/to/icon.png",
     name: {
       en: "name",
