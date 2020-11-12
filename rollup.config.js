@@ -2,6 +2,7 @@
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import commonjs from "@rollup/plugin-commonjs";
+import json from "@rollup/plugin-json";
 import packageJson from "./package.json";
 
 export default {
@@ -13,8 +14,9 @@ export default {
     sourcemap: "inline",
     exports: "named",
   },
-  external: [...Object.keys(packageJson.devDependencies || {})],
+  external: [...Object.keys(packageJson.devDependencies || {}), "fs", "path"],
   plugins: [
+    json(),
     resolve(),
     typescript(),
     commonjs({

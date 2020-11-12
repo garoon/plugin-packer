@@ -4,6 +4,9 @@
   "version": "1.0.0",
   "description": "Package your Garoon plugin",
   "main": "dist/index.js",
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "scripts": {
     "lint": "npm run lint:ts && npm run lint:eslint",
     "lint:ts": "tsc --noEmit",
@@ -27,6 +30,7 @@
     "@cybozu/eslint-config": "^11.0.2",
     "@rollup/plugin-buble": "^0.21.3",
     "@rollup/plugin-commonjs": "^16.0.0",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^10.0.0",
     "@rollup/plugin-typescript": "^6.1.0",
     "@types/jest": "^26.0.15",
