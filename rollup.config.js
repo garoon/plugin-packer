@@ -14,7 +14,7 @@ export default {
     sourcemap: "inline",
     exports: "named",
   },
-  external: [...Object.keys(packageJson.devDependencies || {}), "fs", "path"],
+  external: [...Object.keys(packageJson.dependencies || {}), "fs", "path"],
   plugins: [
     json(),
     resolve(),
