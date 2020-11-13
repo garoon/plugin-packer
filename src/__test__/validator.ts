@@ -1,23 +1,9 @@
 import { validateManifest } from "../validator";
-import { GaroonPluginManifestJson } from "../../types/manifest-schema";
-
-const validJson = (overrideParams = {}): GaroonPluginManifestJson => {
-  return {
-    manifest_version: 1,
-    version: "1.0.0",
-    target_applications: ["ALL"],
-    impacted_applications: ["ALL"],
-    icon: "/path/to/icon.png",
-    name: {
-      en: "name",
-    },
-    ...overrideParams,
-  };
-};
+import { createValidManifestJson } from "../testutil";
 
 describe("validateManifest", () => {
   test("minimum valid json", () => {
-    const result = validateManifest(validJson());
+    const result = validateManifest(createValidManifestJson());
     expect(result).toEqual({
       valid: true,
       errors: null,
@@ -25,7 +11,7 @@ describe("validateManifest", () => {
   });
 
   test("missingProperty", () => {
-    const json = validJson();
+    const json = createValidManifestJson();
     // @ts-ignore
     delete json.name;
     const result = validateManifest(json);
@@ -46,7 +32,7 @@ describe("validateManifest", () => {
   });
 
   test("invalid", () => {
-    const json = validJson({
+    const json = createValidManifestJson({
       manifest_version: "1",
     });
     // @ts-ignore
