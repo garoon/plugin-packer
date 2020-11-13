@@ -44,6 +44,9 @@
     "typescript": "^4.0.5"
   },
   "dependencies": {
-    "ajv": "^6.12.6"
+    "ajv": "^6.12.6",
+    "debug": "^4.2.0",
+    "mkdirp": "^1.0.4",
+    "yazl": "^2.5.1"
   }
 }
