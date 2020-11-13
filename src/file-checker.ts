@@ -1,49 +1,22 @@
 import { GaroonPluginManifestJson } from "../types/manifest-schema";
 import path from "path";
 import fs from "fs";
-
-const checkTargetKeys = [
-  "icon",
-  "desktop.js",
-  "desktop.css",
-  "config.html",
-  "config.js",
-  "config.css",
-];
-
-function isRelativePath(filePath: string): boolean {
-  return !/^https?:/.test(filePath);
-}
+import { sourceListForPackage } from "./sourcelist";
 
 export const checkFileExistence = async ({
-  baseDir,
+  pluginDir,
   manifestJson,
 }: {
-  baseDir: string;
+  pluginDir: string;
   manifestJson: GaroonPluginManifestJson;
 }): Promise<{ check: boolean; error?: Error }> => {
   try {
+    const sourceList = sourceListForPackage(manifestJson);
     await Promise.all(
-      checkTargetKeys.map((key) => {
-        const itemPath = getTargetPath({
-          key,
-          manifestJson,
-        });
-
-        if (typeof itemPath === "string") {
-          return fileExists(path.join(baseDir, itemPath));
-        }
-
-        if (Array.isArray(itemPath)) {
-          return Promise.all(
-            itemPath
-              .filter(isRelativePath)
-              .map((filePath) => fileExists(path.join(baseDir, filePath)))
-          );
-        }
-        return Promise.resolve();
-      })
-    );
+      sourceList.map((filePath) => fileExists(path.join(pluginDir, filePath)))
+    ).catch((error) => {
+      throw new Error(error);
+    });
     return {
       check: true,
     };
@@ -63,22 +36,4 @@ function fileExists(filePath: string) {
       reject(`${filePath} is not file.`);
     });
   });
-}
-
-function getTargetPath({
-  key,
-  manifestJson,
-}: {
-  key: string;
-  manifestJson: GaroonPluginManifestJson;
-}) {
-  const [_name, _key] = key.split(".");
-  switch (_name) {
-    case "icon":
-      return manifestJson.icon;
-    case "desktop":
-      return manifestJson.desktop?.[_key as "js" | "css"];
-    case "config":
-      return manifestJson.config?.[_key as "html" | "js" | "css"];
-  }
 }
