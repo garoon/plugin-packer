@@ -38,5 +38,8 @@ const flags = Object.keys(flagSpec).reduce((prev, current) => {
 }, {} as Record<string, any>) as PackerOptions;
 
 (async () => {
+  if (process.env.NODE_ENV === "test") {
+    return console.log(JSON.stringify({ sourceDir, flags }));
+  }
   await packer(sourceDir, flags);
 })();

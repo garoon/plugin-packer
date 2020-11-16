@@ -52,7 +52,7 @@ export const packer = async (
       : path.join(outputDirPath, "plugin.zip");
     await mkdirp(outputDirPath);
 
-    const file = await createPluginZip(pluginDir, manifestJson);
+    const file = await createPluginZip(pluginDir, manifestJson, options);
 
     fs.writeFile(outputFilePath, file, (err) => {
       if (err) throw new Error(err.message);

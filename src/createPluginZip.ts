@@ -3,10 +3,12 @@ import path from "path";
 import { ZipFile } from "yazl";
 import streamBuffers from "stream-buffers";
 import { generateSourceListFromManifest } from "./generateSourceListFromManifest";
+import { PackerOptions } from "./packer";
 
 export const createPluginZip = (
   pluginDir: string,
-  manifestJson: GaroonPluginManifestJson
+  manifestJson: GaroonPluginManifestJson,
+  options: PackerOptions = {}
 ): Promise<Buffer> => {
   return new Promise((resolve, reject) => {
     const output = new streamBuffers.WritableStreamBuffer();
@@ -14,7 +16,11 @@ export const createPluginZip = (
 
     output.on("finish", () => {
       const buffer = output.getContents() as Buffer;
-      console.log(`plugin.zip: ${buffer.length} bytes`);
+      console.log(
+        `${options.out ? path.basename(options.out) : "plugin.zip"}: ${
+          buffer.length
+        } bytes`
+      );
       resolve(buffer);
     });
 
