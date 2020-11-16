@@ -1,29 +1,53 @@
-import { GaroonPluginManifestJson } from "../types/manifest-schema";
+import fs from "fs";
 import path from "path";
-import { ZipFile } from "yazl";
-import streamBuffers from "stream-buffers";
-import { sourceListForPackage } from "./sourcelist";
+import mkdirp from "mkdirp";
+import { GaroonPluginManifestJson } from "../types/manifest-schema";
+import { checkFileExistence } from "./checkFileExistence";
+import { validateManifest } from "./validateManifest";
+import { createPluginZip } from "./createPluginZip";
 
-export const createPluginZip = (
-  pluginDir: string,
-  manifestJson: GaroonPluginManifestJson
-): Promise<Buffer> => {
-  return new Promise((resolve, reject) => {
-    const output = new streamBuffers.WritableStreamBuffer();
-    const zipFile = new ZipFile();
+export const packer = async (dirPath: string) => {
+  try {
+    const pluginDir = path.resolve(dirPath);
+    if (!fs.statSync(pluginDir).isDirectory()) {
+      throw new Error(`${pluginDir} should be a directory.`);
+    }
 
-    output.on("finish", () => {
-      const buffer = output.getContents() as Buffer;
-      console.log(`plugin.zip: ${buffer.length} bytes`);
-      resolve(buffer);
+    const manifestJsonPath = path.join(pluginDir, "manifest.json");
+
+    if (!fs.statSync(manifestJsonPath).isFile()) {
+      throw new Error(`Manifest file ${dirPath}/manifest.json not found.`);
+    }
+    const manifestJson: GaroonPluginManifestJson = JSON.parse(
+      fs.readFileSync(manifestJsonPath, "utf-8")
+    );
+
+    const { valid, errors } = validateManifest(manifestJson);
+    if (!valid) {
+      throw new Error(`manifest.json is invalid.`);
+    }
+    console.log("Succeeded: manifest.json is valid.");
+
+    const { check, error } = await checkFileExistence({
+      pluginDir,
+      manifestJson,
     });
+    if (!check) {
+      throw new Error("listed file(s) not found.");
+    }
+    console.log("Succeeded: file check");
 
-    zipFile.outputStream.pipe(output);
+    const outputDirPath = path.dirname(pluginDir);
+    const outputFilePath = path.join(outputDirPath, "plugin.zip");
+    await mkdirp(outputDirPath);
 
-    sourceListForPackage(manifestJson).forEach((filePath: string) => {
-      zipFile.addFile(path.join(pluginDir, filePath), filePath);
+    const file = await createPluginZip(pluginDir, manifestJson);
+
+    fs.writeFile(outputFilePath, file, (err) => {
+      if (err) throw new Error(err.message);
+      console.log("Succeeded:", outputFilePath);
     });
-
-    zipFile.end();
-  });
+  } catch (err) {
+    console.log("Failed:", err.message);
+  }
 };

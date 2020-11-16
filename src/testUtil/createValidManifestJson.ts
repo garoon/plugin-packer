@@ -1,4 +1,4 @@
-import { GaroonPluginManifestJson } from "../types/manifest-schema";
+import { GaroonPluginManifestJson } from "../../types/manifest-schema";
 
 export const createValidManifestJson = (
   overrideParams = {}

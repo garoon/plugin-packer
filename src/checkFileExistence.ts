@@ -1,7 +1,7 @@
 import { GaroonPluginManifestJson } from "../types/manifest-schema";
 import path from "path";
 import fs from "fs";
-import { sourceListForPackage } from "./sourcelist";
+import { generateSourceListFromManifest } from "./generateSourceListFromManifest";
 
 export const checkFileExistence = async ({
   pluginDir,
@@ -11,7 +11,7 @@ export const checkFileExistence = async ({
   manifestJson: GaroonPluginManifestJson;
 }): Promise<{ check: boolean; error?: Error }> => {
   try {
-    const sourceList = sourceListForPackage(manifestJson);
+    const sourceList = generateSourceListFromManifest(manifestJson);
     await Promise.all(
       sourceList.map((filePath) => fileExists(path.join(pluginDir, filePath)))
     ).catch((error) => {

@@ -1,6 +1,6 @@
 import { GaroonPluginManifestJson } from "../types/manifest-schema";
 
-export const sourceListForPackage = (
+export const generateSourceListFromManifest = (
   manifestJson: GaroonPluginManifestJson
 ) => {
   const sourceTypes = [
