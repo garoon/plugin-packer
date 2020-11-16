@@ -1,10 +1,10 @@
-import { sourceListForPackage } from "../sourcelist";
-import { createValidManifestJson } from "../testutil";
+import { generateSourceListFromManifest } from "../generateSourceListFromManifest";
+import { createValidManifestJson } from "../testUtil/createValidManifestJson";
 
-describe("sourcelist", () => {
+describe("generateSourceListFromManifest", () => {
   test("minimum", () => {
     const manifestJson = createValidManifestJson();
-    const sourceList = sourceListForPackage(manifestJson);
+    const sourceList = generateSourceListFromManifest(manifestJson);
     expect(sourceList.length).toBe(2);
   });
 
@@ -24,7 +24,7 @@ describe("sourcelist", () => {
         ],
       },
     });
-    const sourceList = sourceListForPackage(manifestJson);
+    const sourceList = generateSourceListFromManifest(manifestJson);
     expect(sourceList.length).toBe(5);
   });
 });

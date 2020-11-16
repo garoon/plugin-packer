@@ -1,7 +1,7 @@
 import assert from "assert";
-import { validateHttpsUrl } from "../validate-https-url";
+import { validateHttpsUrl } from "../validateHttpsUrl";
 
-describe("validate-https-url", () => {
+describe("validateHttpsUrl", () => {
   describe("valid", () => {
     [
       "https://example.com/path/to?foo=bar&baz=piyo#hash",
