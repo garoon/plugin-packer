@@ -48,7 +48,6 @@
   },
   "dependencies": {
     "ajv": "^6.12.6",
-    "debug": "^4.2.0",
     "meow": "^8.0.0",
     "mkdirp": "^1.0.4",
     "stream-buffers": "^3.0.2",
