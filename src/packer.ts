@@ -6,9 +6,16 @@ import { checkFileExistence } from "./checkFileExistence";
 import { validateManifest } from "./validateManifest";
 import { createPluginZip } from "./createPluginZip";
 
-export const packer = async (dirPath: string) => {
+export type PackerOptions = {
+  out?: string;
+};
+
+export const packer = async (
+  sourceDir: string,
+  options: PackerOptions = {}
+) => {
   try {
-    const pluginDir = path.resolve(dirPath);
+    const pluginDir = path.resolve(sourceDir);
     if (!fs.statSync(pluginDir).isDirectory()) {
       throw new Error(`${pluginDir} should be a directory.`);
     }
@@ -16,7 +23,7 @@ export const packer = async (dirPath: string) => {
     const manifestJsonPath = path.join(pluginDir, "manifest.json");
 
     if (!fs.statSync(manifestJsonPath).isFile()) {
-      throw new Error(`Manifest file ${dirPath}/manifest.json not found.`);
+      throw new Error(`Manifest file ${sourceDir}/manifest.json not found.`);
     }
     const manifestJson: GaroonPluginManifestJson = JSON.parse(
       fs.readFileSync(manifestJsonPath, "utf-8")
@@ -37,8 +44,12 @@ export const packer = async (dirPath: string) => {
     }
     console.log("Succeeded: file check");
 
-    const outputDirPath = path.dirname(pluginDir);
-    const outputFilePath = path.join(outputDirPath, "plugin.zip");
+    const outputDirPath = path.dirname(
+      options.out ? path.resolve(options.out) : pluginDir
+    );
+    const outputFilePath = options.out
+      ? path.resolve(options.out)
+      : path.join(outputDirPath, "plugin.zip");
     await mkdirp(outputDirPath);
 
     const file = await createPluginZip(pluginDir, manifestJson);
