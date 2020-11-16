@@ -28,6 +28,7 @@ describe("validateManifest", () => {
           schemaPath: "#/required",
         },
       ],
+      formattedErrorMessage: "Error: '.name' is a required property",
     });
   });
 
