@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import mkdirp from "mkdirp";
+import colors from "colors";
 import { GaroonPluginManifestJson } from "../types/manifest-schema";
 import { checkFileExistence } from "./checkFileExistence";
 import { validateManifest } from "./validateManifest";
@@ -29,20 +30,20 @@ export const packer = async (
       fs.readFileSync(manifestJsonPath, "utf-8")
     );
 
-    const { valid, errors } = validateManifest(manifestJson);
+    const { valid, formattedErrorMessage } = validateManifest(manifestJson);
     if (!valid) {
-      throw new Error(`manifest.json is invalid.`);
+      throw new Error(`Validate manifest.json.\n${formattedErrorMessage}`);
     }
-    console.log("Succeeded: manifest.json is valid.");
+    console.log(colors.green("Succeeded: Validate manifest.json."));
 
     const { check, error } = await checkFileExistence({
       pluginDir,
       manifestJson,
     });
     if (!check) {
-      throw new Error("listed file(s) not found.");
+      throw new Error(`Check package resources.\n${error?.message}`);
     }
-    console.log("Succeeded: file check");
+    console.log(colors.green("Succeeded: Check package resources."));
 
     const outputDirPath = path.dirname(
       options.out ? path.resolve(options.out) : pluginDir
@@ -55,10 +56,13 @@ export const packer = async (
     const file = await createPluginZip(pluginDir, manifestJson, options);
 
     fs.writeFile(outputFilePath, file, (err) => {
-      if (err) throw new Error(err.message);
-      console.log("Succeeded:", outputFilePath);
+      if (err) throw new Error(`Create ZIP file.`);
+      console.log(
+        colors.green(`Succeeded: Create ZIP file.\nCreated: ${outputFilePath}`)
+      );
     });
   } catch (err) {
-    console.log("Failed:", err.message);
+    console.log(colors.red(`Failed: ${err.message}`));
+    throw new Error("Failed: Packaging process failed.");
   }
 };

@@ -1,5 +1,6 @@
 import { GaroonPluginManifestJson } from "../types/manifest-schema";
 import path from "path";
+import colors from "colors";
 import { ZipFile } from "yazl";
 import streamBuffers from "stream-buffers";
 import { generateSourceListFromManifest } from "./generateSourceListFromManifest";
@@ -17,9 +18,11 @@ export const createPluginZip = (
     output.on("finish", () => {
       const buffer = output.getContents() as Buffer;
       console.log(
-        `${options.out ? path.basename(options.out) : "plugin.zip"}: ${
-          buffer.length
-        } bytes`
+        colors.blue(
+          `Info: ${options.out ? path.basename(options.out) : "plugin.zip"} ${
+            buffer.length
+          } bytes`
+        )
       );
       resolve(buffer);
     });

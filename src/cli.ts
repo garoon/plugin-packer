@@ -1,4 +1,5 @@
 import meow from "meow";
+import colors from "colors";
 import { packer, PackerOptions } from "./packer";
 
 const USAGE = "$ garoon-plugin-packer [options] PLUGIN_DIR";
@@ -15,7 +16,7 @@ Usage
   ${USAGE}
 
 Options
-  --out PLUGIN_FILE: The default is 'plugin.zip' in the same directory of "PLUGIN_DIR." 
+  --out PLUGIN_FILE: The default is "plugin.zip" in the same directory of "PLUGIN_DIR". 
 `,
   {
     flags: {
@@ -27,7 +28,7 @@ Options
 );
 
 if (!cli.input[0]) {
-  console.error("Error: An argument `PLUGIN_DIR` is required.");
+  console.error(colors.red("Error: An argument `PLUGIN_DIR` is required."));
   cli.showHelp();
 }
 
@@ -41,5 +42,9 @@ const flags = Object.keys(flagSpec).reduce((prev, current) => {
   if (process.env.NODE_ENV === "test") {
     return console.log(JSON.stringify({ sourceDir, flags }));
   }
-  await packer(sourceDir, flags);
+  try {
+    await packer(sourceDir, flags);
+  } catch (err) {
+    console.log(colors.red(err.message));
+  }
 })();

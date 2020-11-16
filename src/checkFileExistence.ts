@@ -12,11 +12,17 @@ export const checkFileExistence = async ({
 }): Promise<{ check: boolean; error?: Error }> => {
   try {
     const sourceList = generateSourceListFromManifest(manifestJson);
-    await Promise.all(
+    const results = await Promise.all(
       sourceList.map((filePath) => fileExists(path.join(pluginDir, filePath)))
     ).catch((error) => {
       throw new Error(error);
     });
+    const errors = results.filter((result) => result instanceof Error);
+    if (errors.length) {
+      throw new Error(
+        errors.map((err: any) => `Error: ${err.message}`).join("\n")
+      );
+    }
     return {
       check: true,
     };
@@ -29,11 +35,11 @@ export const checkFileExistence = async ({
 };
 
 function fileExists(filePath: string) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     fs.stat(filePath, (err, stats) => {
-      if (err) return reject(err);
+      if (err) return resolve(new Error(`'${err.path}' is missing.`));
       if (stats.isFile()) resolve(true);
-      reject(`${filePath} is not file.`);
+      resolve(new Error(`'${filePath}' is not a file.`));
     });
   });
 }
