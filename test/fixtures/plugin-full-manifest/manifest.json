@@ -1,0 +1,69 @@
+{
+  "manifest_version": 1,
+  "version": "1.0.0",
+  "target_applications": ["ALL"],
+  "impacted_applications": [
+    "PORTAL",
+    "SPACE",
+    "BOOKMARKS",
+    "SCHEDULER",
+    "MESSAGES",
+    "BULLETIN_BOARD",
+    "CABINET",
+    "MEMO",
+    "PHONE_MESSAGES",
+    "TIMESHEET",
+    "ADDRESS_BOOK",
+    "EMAIL",
+    "WORKFLOW",
+    "MULTI_REPORT",
+    "PRESENCE_INDICATORS",
+    "FAVORITE",
+    "NOTIFICATIONS",
+    "RESPOND"
+  ],
+  "name": {
+    "ja": "サンプルプラグイン",
+    "en": "sample plugin",
+    "zh": "插件的例子",
+    "zh-tw": "插件的例子"
+  },
+  "description": {
+    "ja": "これはサンプルプラグインです。",
+    "en": "This is sample plugin.",
+    "zh": "这是插件的例子",
+    "zh-tw": "这是插件的例子"
+  },
+  "icon": "image/icon.png",
+  "homepage_url": {
+    "ja": "http://jp.example.com",
+    "en": "http://en.example.com",
+    "zh": "http://zh.example.com",
+    "zh-tw": "http://zh.example.com"
+  },
+  "desktop": {
+    "js": [
+      "js/desktop.js",
+      "https://example.com/js/desktop.js"
+    ],
+    "css": [
+      "https://example.com/css/desktop.css",
+      "css/desktop.css"
+    ]
+  },
+  "config": {
+    "html": "html/config.html",
+    "js": [
+      "https://example.com/js/config.js",
+      "js/config.js"
+    ],
+    "css": [
+      "css/config.css",
+      "https://example.com/css/config.css"
+    ],
+    "required_params": [
+      "Param1",
+      "Param2"
+    ]
+  }
+}
