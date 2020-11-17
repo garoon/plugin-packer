@@ -1,5 +1,5 @@
 import assert from "assert";
-import { validateHttpsUrl } from "../validateHttpsUrl";
+import { validateHttpsUrl } from "../src/validateHttpsUrl";
 
 describe("validateHttpsUrl", () => {
   describe("valid", () => {

@@ -1,5 +1,5 @@
-import { generateSourceListFromManifest } from "../generateSourceListFromManifest";
-import { createValidManifestJson } from "../testUtil/createValidManifestJson";
+import { generateSourceListFromManifest } from "../src/generateSourceListFromManifest";
+import { createValidManifestJson } from "./helper/createValidManifestJson";
 
 describe("generateSourceListFromManifest", () => {
   test("minimum", () => {

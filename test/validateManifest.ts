@@ -1,5 +1,5 @@
-import { validateManifest } from "../validateManifest";
-import { createValidManifestJson } from "../testUtil/createValidManifestJson";
+import { validateManifest } from "../src/validateManifest";
+import { createValidManifestJson } from "./helper/createValidManifestJson";
 
 describe("validateManifest", () => {
   test("minimum valid json", () => {

@@ -1,5 +1,6 @@
 module.exports = {
-  testRegex: "src/__test__/*.*[jt]s$",
+  testRegex: "/test/*.*.ts$",
+  testPathIgnorePatterns: ["/node_modules/", "/helper/", "/fixtures/"],
   testEnvironment: "node",
   transform: {
     "^.+\\.(ts|tsx)$": "ts-jest",
