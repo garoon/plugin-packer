@@ -16,7 +16,8 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "npm run dev",
-    "test": "jest"
+    "test": "jest",
+    "gen-dts": "node script/generate-dts.js"
   },
   "keywords": [
     "garoon"
@@ -39,6 +40,7 @@
     "@types/yazl": "^2.4.2",
     "eslint": "^7.13.0",
     "jest": "^26.6.3",
+    "json-schema-to-typescript": "^9.1.1",
     "prettier": "^2.1.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.33.1",
