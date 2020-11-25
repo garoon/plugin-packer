@@ -1,5 +1,6 @@
 import { validateManifest } from "../src/validateManifest";
 import { createValidManifestJson } from "./helper/createValidManifestJson";
+import assert from "assert";
 
 describe("validateManifest", () => {
   test("minimum valid json", () => {
@@ -41,5 +42,12 @@ describe("validateManifest", () => {
     const result = validateManifest(json);
     expect(result.valid).toBe(false);
     expect(result.errors?.length).toBe(2);
+  });
+
+  test("plugin-invalid-https-url", () => {
+    const json = require("./fixtures/plugin-invalid-https-url/manifest.json");
+    const result = validateManifest(json);
+    assert(result.valid === true);
+    assert(result.errors?.length === 3);
   });
 });

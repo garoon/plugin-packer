@@ -1,0 +1,10 @@
+{
+  "manifest_version": 1,
+  "version": "1.0.0",
+  "target_applications": ["ALL"],
+  "impacted_applications": ["ALL"],
+  "name": {
+    "en": "sample extension"
+  },
+  "icon": "image/missing-file.png"
+}

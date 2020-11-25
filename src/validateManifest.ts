@@ -21,7 +21,7 @@ export const validateManifest = (
     formats: {
       "http-url": (str: string) => validateHttpsUrl(str, true),
       "https-url": (str: string) => validateHttpsUrl(str),
-      "relative-path": relativePath,
+      "relative-path": (str: string) => !validateHttpsUrl(str, true),
     },
   });
   ajv.addMetaSchema(v4metaSchema);
