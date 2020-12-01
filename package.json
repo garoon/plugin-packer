@@ -7,6 +7,14 @@
   "engines": {
     "node": ">=10.0.0"
   },
+  "bin": {
+    "garoon-plugin-packer": "bin/cli.js"
+  },
+  "files": [
+    "manifest-schema.json",
+    "dist",
+    "types/manifest-schema.d.ts"
+  ],
   "scripts": {
     "lint": "npm run lint:ts && npm run lint:eslint",
     "lint:ts": "tsc --noEmit",
@@ -17,7 +25,8 @@
     "dev": "rollup -c -w",
     "start": "npm run dev",
     "test": "jest",
-    "gen-dts": "node script/generate-dts.js"
+    "gen-dts": "node script/generate-dts.js",
+    "prerelease": "npm run lint && npm run test"
   },
   "keywords": [
     "garoon"
