@@ -32,8 +32,12 @@ export const validateManifest = (
   return {
     valid,
     errors: validate.errors,
-    formattedErrorMessage: validate.errors
-      ?.map((err) => `Error: '${err.dataPath}' ${err.message}`)
-      .join("\n"),
+    ...(validate.errors
+      ? {
+          formattedErrorMessage: validate.errors
+            .map((err) => `Error: '${err.dataPath}' ${err.message}`)
+            .join("\n"),
+        }
+      : {}),
   };
 };
