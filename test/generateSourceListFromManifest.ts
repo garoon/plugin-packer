@@ -1,11 +1,12 @@
 import { generateSourceListFromManifest } from "../src/generateSourceListFromManifest";
 import { createValidManifestJson } from "./helper/createValidManifestJson";
+import assert from "assert";
 
 describe("generateSourceListFromManifest", () => {
   test("minimum", () => {
     const manifestJson = createValidManifestJson();
     const sourceList = generateSourceListFromManifest(manifestJson);
-    expect(sourceList.length).toBe(2);
+    assert(sourceList.length === 2);
   });
 
   test("additional", () => {
@@ -25,6 +26,6 @@ describe("generateSourceListFromManifest", () => {
       },
     });
     const sourceList = generateSourceListFromManifest(manifestJson);
-    expect(sourceList.length).toBe(5);
+    assert(sourceList.length === 5);
   });
 });
