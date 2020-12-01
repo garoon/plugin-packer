@@ -64,5 +64,11 @@
     "mkdirp": "^1.0.4",
     "stream-buffers": "^3.0.2",
     "yazl": "^2.5.1"
-  }
+  },
+  "homepage": "https://github.com/garoon/garoon-plugin-packer",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garoon/garoon-plugin-packer.git"
+  },
+  "bugs": "https://github.com/garoon/garoon-plugin-packer/issues"
 }
