@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "target": "es2015",
+    "module": "CommonJS",
     "strict": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "types"
-    ]
-  }
+    "typeRoots": ["node_modules/@types", "types"],
+    "allowJs": true,
+    "esModuleInterop": true,
+    "rootDirs": ["src"],
+    "outDir": "dist"
+  },
+  "include": ["src/**/*"]
 }

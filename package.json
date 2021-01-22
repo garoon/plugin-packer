@@ -1,9 +1,8 @@
 {
-  "name": "garoon-plugin-packer",
-  "private": true,
+  "name": "@garoon/plugin-packer",
   "version": "1.0.0",
   "description": "Package your Garoon plugin",
-  "main": "dist/index.js",
+  "main": "dist/packer.js",
   "engines": {
     "node": ">=10.0.0"
   },
@@ -11,7 +10,7 @@
     "garoon-plugin-packer": "bin/cli.js"
   },
   "files": [
-    "manifest-schema.json",
+    "src/manifest-schema.json",
     "dist",
     "types/manifest-schema.d.ts"
   ],
@@ -21,12 +20,13 @@
     "lint:eslint": "eslint 'src/**/*.ts'",
     "fix:lint": "npm run lint:eslint -- --fix",
     "prebuild": "rimraf dist",
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "dev": "tsc -w",
     "start": "npm run dev",
     "test": "jest",
     "gen-dts": "node script/generate-dts.js",
-    "prerelease": "npm run lint && npm run test"
+    "prerelease": "npm run lint && npm run test",
+    "build": "tsc",
+    "release": "standard-version"
   },
   "keywords": [
     "garoon"
@@ -38,11 +38,6 @@
   "license": "MIT",
   "devDependencies": {
     "@cybozu/eslint-config": "^11.0.2",
-    "@rollup/plugin-buble": "^0.21.3",
-    "@rollup/plugin-commonjs": "^16.0.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^10.0.0",
-    "@rollup/plugin-typescript": "^6.1.0",
     "@types/jest": "^26.0.15",
     "@types/mkdirp": "^1.0.1",
     "@types/stream-buffers": "^3.0.3",
@@ -52,8 +47,7 @@
     "json-schema-to-typescript": "^9.1.1",
     "prettier": "^2.1.2",
     "rimraf": "^3.0.2",
-    "rollup": "^2.33.1",
-    "rollup-plugin-terser": "^7.0.2",
+    "standard-version": "^9.1.0",
     "ts-jest": "^26.4.4",
     "typescript": "^4.0.5"
   },
@@ -65,10 +59,13 @@
     "stream-buffers": "^3.0.2",
     "yazl": "^2.5.1"
   },
-  "homepage": "https://github.com/garoon/garoon-plugin-packer",
+  "homepage": "https://github.com/garoon/plugin-packer",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/garoon/garoon-plugin-packer.git"
+    "url": "git+https://github.com/garoon/plugin-packer.git"
   },
-  "bugs": "https://github.com/garoon/garoon-plugin-packer/issues"
+  "bugs": "https://github.com/garoon/plugin-packer/issues",
+  "publishConfig": {
+    "access": "public"
+  }
 }
