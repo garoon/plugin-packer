@@ -45,7 +45,7 @@ $ npm run package
 # Usage: Node.js API
 
 ```js
-const { packer } = require("garoon-plugin-packer");
+const { packer } = require("@garoon/plugin-packer");
 
 packer("./pluginDir");
 ```
