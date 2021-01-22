@@ -44,7 +44,11 @@ $ npm run package
 
 # Usage: Node.js API
 
-TBD
+```js
+const { packer } = require("garoon-plugin-packer");
+
+packer("./pluginDir");
+```
 
 ## Licence
 
