@@ -3,7 +3,7 @@
 
 const fs = require("fs");
 const { compile } = require("json-schema-to-typescript");
-const schema = require("../manifest-schema.json");
+const schema = require("../src/manifest-schema.json");
 
 delete schema.definitions.resources.items.anyOf;
 

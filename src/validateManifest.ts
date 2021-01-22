@@ -1,7 +1,7 @@
 import type { GaroonPluginManifestJson } from "../types/manifest-schema";
 import Ajv, { ErrorObject } from "ajv";
 import v4metaSchema from "ajv/lib/refs/json-schema-draft-04.json";
-import jsonSchema from "../manifest-schema.json";
+import jsonSchema from "./manifest-schema.json";
 import { validateHttpsUrl } from "./validateHttpsUrl";
 
 export const validateManifest = (
