@@ -1,6 +1,6 @@
 {
-  "name": "garoon-plugin-packer",
-  "private": true,
+  "name": "@garoon/plugin-packer",
+  "private": false,
   "version": "1.0.0",
   "description": "Package your Garoon plugin",
   "main": "dist/packer.js",
