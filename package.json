@@ -26,7 +26,8 @@
     "test": "jest",
     "gen-dts": "node script/generate-dts.js",
     "prerelease": "npm run lint && npm run test",
-    "build": "tsc"
+    "build": "tsc",
+    "release": "standard-version"
   },
   "keywords": [
     "garoon"
@@ -47,6 +48,7 @@
     "json-schema-to-typescript": "^9.1.1",
     "prettier": "^2.1.2",
     "rimraf": "^3.0.2",
+    "standard-version": "^9.1.0",
     "ts-jest": "^26.4.4",
     "typescript": "^4.0.5"
   },
