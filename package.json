@@ -60,10 +60,10 @@
     "stream-buffers": "^3.0.2",
     "yazl": "^2.5.1"
   },
-  "homepage": "https://github.com/garoon/garoon-plugin-packer",
+  "homepage": "https://github.com/garoon/plugin-packer",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/garoon/garoon-plugin-packer.git"
+    "url": "git+https://github.com/garoon/plugin-packer.git"
   },
-  "bugs": "https://github.com/garoon/garoon-plugin-packer/issues"
+  "bugs": "https://github.com/garoon/plugin-packer/issues"
 }
