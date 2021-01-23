@@ -17,7 +17,7 @@ $ npm install -g @garoon/plugin-packer
 # Usage: CLI
 
 ```shell script
-$ kintone-plugin-packer [OPTIONS] PLUGIN_DIR
+$ garoon-plugin-packer [OPTIONS] PLUGIN_DIR
 ```
 
 ## Options
