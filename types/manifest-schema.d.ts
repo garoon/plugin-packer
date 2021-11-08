@@ -77,6 +77,24 @@ export interface GaroonPluginManifestJson {
     zh?: string;
     "zh-tw"?: string;
   };
+  provider?: {
+    ja?: {
+      name: string;
+      url: string;
+    };
+    en: {
+      name: string;
+      url: string;
+    };
+    zh?: {
+      name: string;
+      url: string;
+    };
+    "zh-tw"?: {
+      name: string;
+      url: string;
+    };
+  };
   desktop?: {
     js?: Resources;
     css?: Resources;
