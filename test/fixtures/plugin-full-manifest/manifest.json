@@ -41,6 +41,24 @@
     "zh": "http://zh.example.com",
     "zh-tw": "http://zh.example.com"
   },
+  "provider": {
+    "ja": {
+      "name": "Sample provider.",
+      "url": "https://jp.example.com"
+    },
+    "en": {
+      "name": "Sample provider.",
+      "url": "https://en.example.com"
+    },
+    "zh": {
+      "name": "Sample provider.",
+      "url": "https://zh.example.com"
+    },
+    "zh-tw": {
+      "name": "Sample provider.",
+      "url": "https://zh.example.com"
+    }
+  },
   "desktop": {
     "js": [
       "js/desktop.js",

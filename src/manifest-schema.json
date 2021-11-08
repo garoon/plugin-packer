@@ -141,6 +141,80 @@
         }
       }
     },
+    "provider": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ja": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "url": {
+              "type": "string",
+              "minLength": 1,
+              "format": "https-url"
+            }
+          }
+        },
+        "en": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "url": {
+              "type": "string",
+              "minLength": 1,
+              "format": "https-url"
+            }
+          }
+        },
+        "zh": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "url": {
+              "type": "string",
+              "minLength": 1,
+              "format": "https-url"
+            }
+          }
+        },
+        "zh-tw": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "url": {
+              "type": "string",
+              "minLength": 1,
+              "format": "https-url"
+            }
+          }
+        }
+      },
+      "required": [
+        "en"
+      ]
+    },
+    
     "desktop": {
       "type": "object",
       "additionalProperties": false,
