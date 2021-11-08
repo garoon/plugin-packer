@@ -48,6 +48,6 @@ describe("validateManifest", () => {
     const json = require("./fixtures/plugin-invalid-https-url/manifest.json");
     const result = validateManifest(json);
     assert(result.valid === false);
-    assert(result.errors?.length === 3);
+    assert(result.errors?.length === 4);
   });
 });

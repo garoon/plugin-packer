@@ -11,5 +11,15 @@
       "http://example.com/http-is-invalid.js"
     ]
   },
+  "provider": {
+    "en": {
+      "name": "sample provider name",
+      "url": "https://jp.example.com"
+    },
+    "ja": {
+      "name": "sample provider name",
+      "url": "http://jp.example.com"
+    }
+  },
   "icon": "image/icon.png"
 }
