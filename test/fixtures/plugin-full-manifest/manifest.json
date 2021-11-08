@@ -36,10 +36,10 @@
   },
   "icon": "image/icon.png",
   "homepage_url": {
-    "ja": "http://jp.example.com",
-    "en": "http://en.example.com",
-    "zh": "http://zh.example.com",
-    "zh-tw": "http://zh.example.com"
+    "ja": "https://jp.example.com",
+    "en": "https://en.example.com",
+    "zh": "https://zh.example.com",
+    "zh-tw": "https://zh.example.com"
   },
   "provider": {
     "ja": {
