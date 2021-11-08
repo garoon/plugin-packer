@@ -13,11 +13,11 @@
   },
   "provider": {
     "en": {
-      "name": "1",
+      "name": "sampler provider name",
       "url": "https://jp.example.com"
     },
     "ja": {
-      "name": "",
+      "name": "sampler provider name",
       "url": "http://jp.example.com"
     }
   },

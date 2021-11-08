@@ -159,7 +159,11 @@
               "minLength": 1,
               "format": "https-url"
             }
-          }
+          },
+          "required": [
+            "name",
+            "url"
+          ]
         },
         "en": {
           "type": "object",
@@ -175,7 +179,11 @@
               "minLength": 1,
               "format": "https-url"
             }
-          }
+          },
+          "required": [
+            "name",
+            "url"
+          ]
         },
         "zh": {
           "type": "object",
@@ -191,7 +199,11 @@
               "minLength": 1,
               "format": "https-url"
             }
-          }
+          },
+          "required": [
+            "name",
+            "url"
+          ]
         },
         "zh-tw": {
           "type": "object",
@@ -207,7 +219,11 @@
               "minLength": 1,
               "format": "https-url"
             }
-          }
+          },
+          "required": [
+            "name",
+            "url"
+          ]
         }
       },
       "required": [
