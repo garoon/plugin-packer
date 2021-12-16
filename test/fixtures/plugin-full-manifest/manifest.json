@@ -1,4 +1,5 @@
 {
+  "plugin_code": "plugin_code",
   "manifest_version": 1,
   "version": "1.0.0",
   "target_applications": ["ALL"],
