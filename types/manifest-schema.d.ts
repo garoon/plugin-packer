@@ -8,6 +8,7 @@
 export type Resources = string[];
 
 export interface GaroonPluginManifestJson {
+  plugin_code?: string;
   manifest_version: number;
   version: string;
   target_applications: ["ALL", ..."ALL"[]];
