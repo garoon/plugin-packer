@@ -52,15 +52,15 @@ describe("validateManifest", () => {
   });
 
   describe("plugin-invalid-plugin_code", () => {
-    test("plugin_code have more than 128 characters", () => {
-      const json = require("./fixtures/plugin-invalid-plugin-code/too-length.json");
+    test("plugin_code has more than 128 characters", () => {
+      const json = require("./fixtures/plugin-invalid-plugin-code/exceed-max-length.json");
       const result = validateManifest(json);
       assert(result.valid === false);
       assert(result.errors?.length === 1);
     });
 
     test("plugin_code is not string", () => {
-      const json = require("./fixtures/plugin-invalid-plugin-code/too-length.json");
+      const json = require("./fixtures/plugin-invalid-plugin-code/not-string.json");
       const result = validateManifest(json);
       assert(result.valid === false);
       assert(result.errors?.length === 1);
